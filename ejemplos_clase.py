@@ -170,7 +170,7 @@ def bucle_while_for():
 
         # Verifico si el número ingresado es mayor al
         # máximo número ingresado hasta el momento
-        if (maximo_numero == None) or (numero > maximo_numero):
+        if (maximo_numero is None) or (numero > maximo_numero):    # cambie == por is. funciona igual ==
             maximo_numero = numero
 
         lista_numeros.append(numero)
