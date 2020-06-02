@@ -30,18 +30,29 @@ def ej1():
     Realice un programa que pida por consola dos números que representen
     el principio y fin de una secuencia numérica.
     Realizar un bucle "for" que recorra esa secuencia armada con "range"
-    y cuante cuantes números ingresados hay y la sumatoria de todos los números
+    y cuante cuantos números ingresados hay y la sumatoria de todos los números
     Tener en cuenta que "range" no incluye el número de "fin" en su secuencia,
     sino que va hasta el anterior
     '''
 
-    # inicio = ....
-    # fin = ....
+    inicio = int(input("ingrese el primer numero de la secuencia\n")) 
+    fin = int(input("ingrese el siguiente numero de la secuencia\n")) 
 
-    # cantidad_numeros ....
-    # sumatoria ....
+    cantidad_numeros = 0
+    sumatoria = 0
+    numero = 0
 
-    # bucle.....
+    lista = list(range(inicio, fin))
+    print("la secuencia ingresada es", lista) # agregue la impresion de la lista
+
+    for numero in lista:
+        sumatoria += numero    # bucle.....
+
+    for numero in lista:
+        cantidad_numeros += 1
+
+    promedio = sumatoria / cantidad_numeros
+    print("el promedio de la secuencia es", promedio)   
 
     # Al terminar el bucle calcular el promedio como:
     # promedio = sumatoria / cantidad_numeros
@@ -62,6 +73,42 @@ def ej2():
     Se debe debe imprimir un cartel de error si el operador ingresado no es
     alguno de lo soportados o no es la palabra "FIN"
     '''
+    while True:
+
+      numero_1 = float(input("Ingrese el primer numero: \n"))
+      numero_2 = float(input("ingrese el segundo numero: \n"))
+
+      print("ingrese la operacion que desea realizar")
+  
+      operacion = input()
+      suma = numero_1 + numero_2
+      resta = numero_1 - numero_2
+      multiplicacion = numero_1 * numero_2
+      division = numero_1 / numero_2
+      potencia = numero_1 ** numero_2
+
+      if operacion == "+":
+        print("la suma es",suma)
+      elif operacion == "-":
+        print("la resta es:",resta) 
+      elif operacion == "*":
+        print("la multiplicacion es:",multiplicacion)
+      elif operacion == "/":
+        print("la division es:",division)
+      elif operacion == "**":
+        print(numero_1,"elevado a",numero_2,"es:",potencia)
+        
+      if operacion == "FIN":
+        break
+
+      if operacion != "+" and operacion != "-" and operacion != "*" and operacion !="/" and operacion !="**":
+        print("El operador ingresado no es correcto")
+        break
+
+      
+
+
+
 
 
 def ej3():
@@ -85,15 +132,43 @@ def ej3():
 
     Debe contar la cantidad de notas válidas y la cantidad de ausentes
     '''
-
+  
+    
     # Para calcular el promedio primero debe obtener la suma
     # de todas las notas, que irá almacenando en esta variable
+    
     sumatoria = 0           # Ya le hemos inicializado en 0
 
     cantidad_notas = 0      # Aquí debe contar cuantas notas válidas encontró
     cantidad_ausentes = 0   # Aquí debe contar cuantos ausentes hubo
 
+
+    for nota in notas:
+      if nota >= 0:
+        sumatoria += nota
+      if nota >+ 0:
+        cantidad_notas += 1
+      if nota < 0:
+        cantidad_ausentes += 1 
+
+    promedio = sumatoria / cantidad_notas
+    print("El promedio es:", promedio)
+
+    if promedio >= 90:
+        print("A")
+    elif promedio >= 80:
+        print("B")
+    elif promedio >= 70:
+        print("C")
+    elif promedio >= 60:
+        print("D") 
+    else:
+        print("F")
+    
+    print("Cantidad de ausentes:", cantidad_ausentes)
+
     # Realice aquí el bucle para recorrer todas las notas
+    
     # y cacular la sumatoria
 
     # Terminado el bucle calcule el promedio como
@@ -114,8 +189,8 @@ def ej4():
     copielo a este ejercicio y modifíquelo para cumplir el
     siguiente requerimiento
 
-    En este ejercicio se lo provee de una lista de temperatuas,
-    esa lista de temperatuas corresponde a los valores de temperaturas
+    En este ejercicio se lo provee de una lista de temperaturas,
+    esa lista de temperaturas corresponde a los valores de temperaturas
     tomados durante una temperorada del año en Buenos Aires.
     Ustede deberá analizar dicha lista para deducir
     en que temporada del año se realizó el muestreo de temperatura.
@@ -141,6 +216,42 @@ def ej4():
 
     # Colocar el bucle aqui......
 
+    for temp in temp_dataloger: # sumatoria de las temperaturas por bucle
+      temperatura_sumatoria += temp
+
+    for temp in temp_dataloger:
+      temperatura_len += 1  
+
+    for temp in temp_dataloger: # temperatura maxima
+      if (temperatura_max is None) or (temp >= temperatura_max):
+        temperatura_max = temp
+        
+
+    for temp in temp_dataloger: # temperatura inima
+      if (temperatura_min is None) or (temp < temperatura_min):
+        temperatura_min = temp   
+
+    temperatura_promedio = temperatura_sumatoria / temperatura_len
+    
+    maxima = max(temp_dataloger)
+    minima = min(temp_dataloger)
+
+    print("La temperatura maxima por bucle es", temperatura_max) 
+    print("La temperatura maxima con funcion max es", maxima)
+    print("La temperatura minima por bucle es", temperatura_min) 
+    print("La temperatura minima con funcion min es", minima)
+    
+
+    sumatoria = 0
+    cuenta_temp = 0
+    
+    sumatoria = sum(temp_dataloger)
+    cuenta_temp = len(temp_dataloger)
+    promedio_temp = sumatoria / cuenta_temp
+    
+    print("La temperatura promedio por bucle es", temperatura_promedio)
+    print("La temperatura promedio calculada con max y cuenta es", promedio_temp)
+
     # Al finalizar el bucle compare si el valor que usted calculó para
     # temperatura_max y temperatura_min coincide con el que podría calcular
     # usando la función "max" y la función "min" de python
@@ -153,7 +264,15 @@ def ej4():
     # Corroboren los resultados de temperatura_sumatoria
     # usando la función "sum"
     # función "sum" --> https://www.w3schools.com/python/ref_func_sum.asp
-
+    
+    if (temperatura_min >= 19) and (temperatura_max <= 28):
+      print("Nos encontramos en verano")
+    elif (temperatura_min >= 11) and (temperatura_max <= 24):
+      print("Nos encontramos en otoño")
+    elif (temperatura_min >= 8) and (temperatura_max <= 14):
+      print("Nos encontramos en invierno")
+    elif (temperatura_min >= 10) and (temperatura_max <= 24):
+      print("Nos encontramos en primavera")
     '''
     Una vez que tengamos nuestros valores correctamente calculados debemos
     determinar en que epoca del año nos encontramos en Buenos Aires utilizando
@@ -164,6 +283,8 @@ def ej4():
     otoño -->       min = 11, max = 24
     invierno -->    min = 8, max = 14
     primavera -->   min = 10, max = 24
+
+    
 
     Referencia:
     https://es.weatherspark.com/y/28981/Clima-promedio-en-Buenos-Aires-Argentina-durante-todo-el-a%C3%B1o
@@ -242,5 +363,5 @@ if __name__ == '__main__':
     #ej1()
     #ej2()
     #ej3()
-    #ej4()
+    ej4()
     #ej5()
