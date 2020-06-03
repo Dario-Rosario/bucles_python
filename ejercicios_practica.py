@@ -356,12 +356,71 @@ def ej5():
        recorre la lista de palabras y busca la mayor según el motivo ingresado ("1" o "2")
 
   '''
+    
+    while True:
+
+      print("Menu:")
+      print("1 - Ordenar por orden alfabético")
+      print("2 - Ordenar por cantidad de letras")
+      print("3 - Salir del programa")
+
+      print("Elija la operacion que desea realizar")
+
+      numero_menu = int(input())
+
+      if numero_menu == 3:
+        print("El programa ha acabado")
+        break
+      if numero_menu != 1 and numero_menu != 2:
+        print("La opcion ingresada no es correcta. Vuelva a intentar")
+        continue
+
+      print("Ingrese 4 palabras")
+
+      palabra_1 = str(input())
+      palabra_2 = str(input())
+      palabra_3 = str(input())
+      palabra_4 = str(input())
+      lista = []
+
+      lista.append(palabra_1)
+      lista.append(palabra_2)
+      lista.append(palabra_3)
+      lista.append(palabra_4)
+      
+      palabra_max = None
+      palabra_letras = None
+    
+      if numero_menu == 1:
+        for palabra in lista:
+          if (palabra_max is None) or (palabra > palabra_max):
+            palabra_max = palabra
+
+      if numero_menu == 2:
+        for palabra in lista:
+          if (palabra_letras is None) or (len(palabra) > len(palabra_letras)):
+            palabra_letras = palabra
+     
+      if numero_menu == 1:
+        print("la palabra max es:",palabra_max)
+      if numero_menu == 2:
+        print("La palabra con mayores letras es:", palabra_letras)      
 
 
+
+
+        
+
+
+      
+
+
+
+      
 if __name__ == '__main__':
     print("Ejercicios de práctica")
     #ej1()
     #ej2()
     #ej3()
-    ej4()
-    #ej5()
+    #ej4()
+    ej5()
